@@ -1,0 +1,16 @@
+.menu ul {
+    list-style: none;
+}
+
+.menu li {
+    display: inline-block;
+    
+}
+
+.menu a {
+    text-decoration: none;
+    padding: 15px 20px;
+    color: blue;
+   background-color: darkred;
+   transform: backgruound-color 0.3s ease;
+}
