@@ -4,17 +4,20 @@
   box-sizing: border-box;
 }
 
+html, body {
+  min-height: 100dvh;
+  overflow: hidden;
+  font-family: 'Orbitron', sans-serif;
+}
+
 body {
-  position: relative;
-  height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: 'Orbitron', sans-serif;
-  overflow: hidden;
   background:
     radial-gradient(circle at 50% 120%, rgba(255,106,0,0.8) 0%, transparent 60%),
     linear-gradient(to top, #1a0b27 0%, #220a42 40%, #490c75 70%, #ff0080 100%);
+  position: relative;
 }
 
 body::after {
@@ -34,6 +37,8 @@ body::after {
   transform: translateY(50%) skewX(-25deg);
   opacity: 0.3;
   z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
 }
 
 .calculator {
@@ -88,13 +93,6 @@ body::after {
   transition: background 0.2s, transform 0.1s, box-shadow 0.2s;
 }
 
-.buttons button.pressed {
-  transform: scale(0.92);
-  box-shadow:
-    0 0 20px #00ffff,
-    inset 0 0 10px #00ffff;
-}
-
 .buttons button:hover {
   background: rgba(50, 0, 70, 0.9);
   box-shadow:
@@ -107,6 +105,17 @@ body::after {
   box-shadow:
     0 0 6px #e600ff,
     inset 0 0 3px #e600ff;
+}
+
+.buttons button.pressed {
+  transform: scale(0.92);
+  box-shadow:
+    0 0 20px #00ffff,
+    inset 0 0 10px #00ffff;
+}
+
+.buttons button[disabled] {
+  visibility: hidden;
 }
 
 @keyframes resultAnim {
@@ -128,10 +137,6 @@ body::after {
   animation: resultAnim 0.4s ease-out;
 }
 
-.buttons button[disabled] {
-  visibility: hidden;
-}
-
 @media (max-width: 480px) {
   #display {
     font-size: 2rem;
@@ -139,6 +144,7 @@ body::after {
     padding: 12px;
     margin-bottom: 12px;
   }
+
   .buttons button {
     padding: 12px;
     font-size: 1rem;
