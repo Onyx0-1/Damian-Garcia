@@ -28,7 +28,7 @@ buttons.forEach(btn => {
 
 function calculate() {
   let expr = display.textContent
-    .replace(/x/g, '*')
+    .replace(/×/g, '*')
     .replace(/÷/g, '/')
     .replace(/\^/g, '**')
     .replace(/√/g, 'Math.sqrt')
@@ -39,6 +39,7 @@ function calculate() {
     const result = eval(expr);
     if (typeof result === 'number' && isFinite(result)) {
       display.textContent = result;
+      
       display.classList.add('result');
       setTimeout(() => display.classList.remove('result'), 400);
     } else {
