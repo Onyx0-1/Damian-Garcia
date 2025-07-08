@@ -23,9 +23,9 @@ buttons.forEach(btn => {
 
 function calculate() {
   let expr = display.textContent
-    .replace(/x/g, '*')
-    .replace(/÷/g, '/')
-    .replace(/\^/g, '**')
+    .replace(/x/, '*')
+    .replace(/÷/, '/')
+    .replace(/\^/, '**')
     .replace(/√(\d+(\.\d+)?)/g, 'Math.sqrt($1)')
     .replace(/cos(\d+(\.\d+)?)/g, 'Math.cos($1)')
     .replace(/tan(\d+(\.\d+)?)/g, 'Math.tan($1)')
