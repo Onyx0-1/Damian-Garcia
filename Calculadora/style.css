@@ -1,0 +1,145 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Orbitron', sans-serif;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 50% 120%, rgba(255,106,0,0.8) 0%, transparent 60%),
+    linear-gradient(to top, #1a0b27 0%, #220a42 40%, #490c75 70%, #ff0080 100%);
+}
+
+body::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 200%;
+  height: 50%;
+  background: repeating-linear-gradient(
+    to right,
+    transparent,
+    transparent 30px,
+    rgba(255,255,255,0.05) 30px,
+    rgba(255,255,255,0.05) 31px
+  );
+  transform: translateY(50%) skewX(-25deg);
+  opacity: 0.3;
+  z-index: 0;
+}
+
+.calculator {
+  position: relative;
+  z-index: 1;
+  background: rgba(20, 0, 40, 0.8);
+  border: 2px solid #e600ff;
+  border-radius: 16px;
+  box-shadow:
+    0 0 20px #e600ff,
+    0 0 40px #00ffff,
+    inset 0 0 10px #e600ff;
+  padding: 20px;
+  max-width: 360px;
+  width: 100%;
+}
+
+#display {
+  background: rgba(0, 0, 0, 0.6);
+  color: #00ffff;
+  font-size: 2.5rem;
+  text-align: right;
+  padding: 16px;
+  border: 1px solid #00ffff;
+  border-radius: 8px;
+  box-shadow:
+    0 0 10px #00ffff,
+    inset 0 0 5px #00ffff;
+  margin-bottom: 16px;
+  min-height: 80px;
+  height: auto;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+.buttons {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+
+.buttons button {
+  background: rgba(30, 0, 50, 0.9);
+  color: #e600ff;
+  font-size: 1.2rem;
+  padding: 16px;
+  border: 2px solid #e600ff;
+  border-radius: 8px;
+  box-shadow:
+    0 0 8px #e600ff,
+    inset 0 0 4px #e600ff;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s, box-shadow 0.2s;
+}
+
+.buttons button.pressed {
+  transform: scale(0.92);
+  box-shadow:
+    0 0 20px #00ffff,
+    inset 0 0 10px #00ffff;
+}
+
+.buttons button:hover {
+  background: rgba(50, 0, 70, 0.9);
+  box-shadow:
+    0 0 12px #00ffff,
+    inset 0 0 6px #00ffff;
+}
+.buttons button:active {
+  transform: scale(0.96);
+  box-shadow:
+    0 0 6px #e600ff,
+    inset 0 0 3px #e600ff;
+}
+
+@keyframes resultAnim {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 10px #00ffff;
+  }
+  50% {
+    transform: scale(1.08);
+    box-shadow: 0 0 30px #00ffff;
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 10px #00ffff;
+  }
+}
+#display.result {
+  animation: resultAnim 0.4s ease-out;
+}
+
+.buttons button[disabled] {
+  visibility: hidden;
+}
+
+@media (max-width: 480px) {
+  #display {
+    font-size: 2rem;
+    min-height: 60px;
+    padding: 12px;
+    margin-bottom: 12px;
+  }
+  .buttons button {
+    padding: 12px;
+    font-size: 1rem;
+  }
+}
